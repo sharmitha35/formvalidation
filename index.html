@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM VALIDATION</title>
+    <script>
+        function func()
+        {
+            
+            var x=document.forms["eform"]["v1"].value;
+            if(x=="")
+            { 
+                alert("Name must be filled out");
+                document.eform.v1.focus();
+                return false;
+            }
+            if(!isNaN(x))
+            {
+                alert("Enter only characters");
+                document.eform.v1.focus();
+                return false;
+            }
+            if((x.length<5)||(x.length>20))
+            {
+                alert("Name must be between 5 and 20 characters");
+                document.eform.v1.focus();
+                return false;
+            }
+            var y=document.eform.t1.value;
+            if(y=="")
+            {
+                alert("Please Enter Mobile Number");
+                document.eform.t1.focus();
+                return false;
+            }
+            if(isNaN(y))
+            {
+                alert("Enter Valid Mobile Number");
+                document.eform.t1.focus();
+                return false;
+            }
+            if((y.length!=10))
+            {
+                alert("Your Mobile Number should be 10 digit Number");
+                document.eform.t1.focus();
+                return false;
+            }
+            var z=document.eform.gend;
+            var sts=0;
+            for(var i=0;i<z.length;i++)
+            {
+                if(z[i].checked==true)
+                {
+                    sts=1;
+                    break;
+                }
+            }
+            if(sts==0)
+            {
+                alert("Select Gender");
+                return false;
+            }
+           
+            var w = document.eform.t3.value;
+            
+            var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+            if(w=="")
+            {
+                alert("Enter password");
+                document.eform.t3.focus();
+                return false;
+            }
+            if(w.length < 6 || w.length > 16){
+                alert("Password must be between 6 and 16 characters");
+                document.eform.t3.focus();
+                return false;
+             }
+             if (!re.test(w)) {
+                alert("password should contain atleast one number and one special character");
+                return false;
+             } 
+
+            var v=document.eform.t5.value;
+            if(v=="")
+            {
+                alert("Enter confirm password");
+                document.eform.t5.focus();
+                return false;
+            }
+            if (!re.test(v)) {
+                alert("password should contain atleast one number and one special character");
+                return false;
+             } 
+            if(w!=v)
+            {
+                alert("Password do not match");
+                document.eform.t5.focus();
+                return false;
+            }
+            var y11=document.getElementById("o");
+            var y12=document.getElementById("q");
+            var y13=document.getElementById("r");
+            var y14=document.getElementById("s");
+            if(y11.checked==false&&y12.checked==false&&y13.checked==false&&y14.checked==false)
+                alert("Please select atleast one event ");
+            var state=document.getElementById("dpt");
+            if(state.value=="")
+            {
+                alert("Select State");
+                return false;
+            }
+            
+            var h=document.eform.gen;
+            var stats=0;
+            for(var i=0;i<h.length;i++)
+            {
+                if(h[i].checked==true)
+                {
+                    stats=1;
+                    break;
+                }
+            }
+            if(stats==0)
+            {
+                alert("Select Accomodation");
+                return false;
+            }  
+            return true;
+        }     
+    </script>
+</head>
+<body>
+    
+
+
+            <center><h2 class="text-danger text-center"><i>EVENT REGISTRATION FORM</i></h2></center>
+            <div class="container-fluid mt-4 " style="background-color:antiquewhite;padding:60px 60px 60px 60px;">
+                <div class="row">
+               <fieldset>
+               <form name="eform" action="#" method="post">
+                                <label for="name">NAME:</label> <br>
+                                <input type="text" id="v" name="v1" ><br><br>
+                                <label for="name">Date Of Birth:</label> <br>
+                                <input type="date" id="u" name="v2" required ><br><br>
+                           
+                                <label for="roll">Roll Number:</label><br>
+                                <input type="number" id="s" name="v3" required><br><br>
+                        
+                                     
+                                 Gender  <br>
+                            
+                                <input type="radio" id="m" name="gend"  value="1">
+                                <label for="1">Male</label><br>
+                                    
+                                <input type="radio" id="p" name="gend"  value="2">
+                                <label for="2">Female</label><br>
+                                    
+                                <input type="radio" id="n" name="gend"  value="3">
+                                <label for="3">Others</label> <br>
+                                <br>
+                                Mobile Number: <br>
+                                <input type="text" id="m1" name="t1"  required> <br>
+                               
+                                E-mail: <br>
+                                <input type="email" id="m2" name="t2" required><br>
+                               <br>
+                               Password: <br>
+                                <input type="password" id="m3" name="t3" required><br>
+                               Confirm Password: <br>
+                                <input type="password" id="m5" name="t5" required><br>
+                               <br>
+                              Address:<br>
+                              <textarea id="m4" name="t4" row="5" cols="20" required></textarea><br>
+                               
+                             <label for="State">Choose Your State:</label>
+                             <select name="dpt" id="dpt" required>
+                             <option value=""></option>
+                             <option value="tamilnadu">Tamilnadu</option>
+                             <option value="karnataka">karnataka</option>
+                             <option value="kerala">kerala</option>
+                             <option value="andhrapradesh">Andhrapradesh</option>                                    
+                             <option value="punjab">Punjab</option>
+                             </select>
+                                    <br>
+                                     
+                                     
+                            Events  <br>
+                                   
+                            <input type="checkbox" id="o" name="eve1"  value="4">
+                            <label for="4">Singing</label><br>
+                                   
+                            <input type="checkbox" id="q" name="eve2"  value="5">
+                            <label for="5">Dancing</label><br>
+                                   
+                            <input type="checkbox" id="r" name="eve3"  value="6">
+                            <label for="6">Drama</label> <br>
+                                    
+                            <input type="Checkbox" id="s" name="eve4"  value="7">
+                            <label for="7">Group Dance</label> <br>
+                                   
+                                     
+                            Accomodation  <br>
+                                    
+                            <input type="radio" id="m9" name="gen"  value="1">
+                            <label for="1">Yes</label><br>
+                                  
+                            <input type="radio" id="m6" name="gen" value="1">
+                            <label for="2">No</label><br>
+                                   
+                            <input type="submit" value="Submit" onclick="func()">
+                            </form></fieldset></div></div>
+
+</body>
+</html>
